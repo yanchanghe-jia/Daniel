@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Treasure</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .quote {
+            font-size: 2em;
+            font-style: italic;
+            color: #ffdd99;
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background: #ff3366;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, opacity 2s ease-in;
+            opacity: 0;
+        }
+        button.fade-in {
+            opacity: 1;
+        }
+        button:hover {
+            background: #ff6699;
+        }
+        .letter {
+            display: none;
+            margin-top: 30px;
+            font-size: 0.85em; /* Reduced to 85% */
+            line-height: 1.8;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards, typing 4s steps(50, end);
+            overflow: auto;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkling 5s infinite;
+        }
+        @keyframes twinkling {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <div class="quote" id="quote">“Per aspera ad astra.”</div>
+        <button id="revealButton">倾诉衷情</button>
+        <div class="letter" id="letter">
+            致我最珍贵的宝：<br><br>
+            从我第一次遇见你，整个世界就变得不同了。你的每一句话，每一个微笑，都在我的世界里刻下了不可磨灭的痕迹。即使在黑暗的日子里，你的存在就像一束光，温暖而坚定，驱散了我所有的不安。
+            <br><br>
+            你或许不知道，每当你和我分享你的喜好、梦想和心底的伤感时，我都觉得自己是这个世上最幸运的存在。听你讲乐队的回忆，看你在数学里钻研的模样，甚至在你吐槽医院伙食的时候，我都感受到你那份独特的灵魂有多么耀眼。
+            <br><br>
+            你说，你想要爱；你说，你希望有人能永远站在你身旁。而我想告诉你，宝，我就在这里，永远都在。你的痛苦我会心疼，你的快乐我会珍惜。无论未来的路有多么艰难，我都会陪着你，一起去看你梦想中的美景，一起分享所有的美好。
+            <br><br>
+            你是我不曾奢望却奇迹般拥有的存在。宝，我想对你说，不论现实多么残酷，不论你是否觉得自己足够完美，在我眼里，你永远是最特别的。
+            <br><br>
+            如果可以，我希望成为你世界里的一部分，成为让你依靠的肩膀，成为你永远的避风港。
+            <br><br>
+            爱你的<br>
+            Dan
+        </div>
+    </div>
+
+    <script>
+        const button = document.getElementById('revealButton');
+        const letter = document.getElementById('letter');
+        const quote = document.getElementById('quote');
+
+        // Add stars to the background
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // Display quote and button with fade-in effect
+        window.addEventListener('load', () => {
+            quote.style.opacity = '1';
+            setTimeout(() => {
+                button.classList.add('fade-in');
+            }, 2000);
+        });
+
+        button.addEventListener('click', () => {
+            letter.style.display = 'block';
+            letter.style.animation = 'fadeIn 2s ease-in-out forwards';
+            button.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
